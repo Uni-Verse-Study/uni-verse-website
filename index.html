@@ -656,9 +656,11 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
         <h2 class="section-h" style="font-size:38px">Sei ab Tag 1 dabei.</h2>
         <p class="section-sub" style="font-size:16px">Trag <strong>deine private E-Mail-Adresse</strong> ein (Gmail, GMX, Web.de o.ä. — vorerst keine Uni-Mail). Wir melden uns dort, sobald UNIverse an deiner Hochschule startet. Keine Werbung, kein Spam.</p>
 
-        <form id="signup-form" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSignup(event)">
-          <input type="hidden" name="form-name" value="signup">
-          <p style="display:none"><label>Bitte leer lassen: <input name="bot-field"></label></p>
+        <form id="signup-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSignup(event)">
+          <input type="hidden" name="access_key" value="0ee10d02-f38b-44bd-86ee-5a5130f3378a">
+          <input type="hidden" name="subject" value="🎉 Neue UNIverse Pre-Launch Anmeldung">
+          <input type="hidden" name="from_name" value="UNIverse Pre-Launch">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="z.B. dein.name@gmail.com" required>
           <input type="text" name="uni" list="unis-list" placeholder="Deine Hochschule (tippen für Vorschläge)" required autocomplete="off">
           <datalist id="unis-list">
@@ -969,20 +971,29 @@ function handleSignup(e){
   const email = form.email.value;
   const uni = form.uni.value;
 
-  // Daten an Netlify Forms senden
+  // Daten an Web3Forms senden (als JSON)
   const formData = new FormData(form);
+  const json = JSON.stringify(Object.fromEntries(formData));
 
-  fetch('/', {
+  fetch('https://api.web3forms.com/submit', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
   })
-  .then(() => {
-    document.getElementById('signup-form-wrap').style.display = 'none';
-    document.getElementById('signup-success').style.display = 'block';
+  .then(async response => {
+    const data = await response.json();
+    if (response.status === 200 && data.success) {
+      document.getElementById('signup-form-wrap').style.display = 'none';
+      document.getElementById('signup-success').style.display = 'block';
 
-    // Analytics-Event (falls später hinzugefügt)
-    if (window.gtag) gtag('event', 'signup', {uni: uni});
+      // Analytics-Event (falls später hinzugefügt)
+      if (window.gtag) gtag('event', 'signup', {uni: uni});
+    } else {
+      throw new Error(data.message || 'Anmeldung fehlgeschlagen');
+    }
   })
   .catch(error => {
     console.error('Signup-Fehler:', error);
