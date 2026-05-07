@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz — UNIverse</title>
+<meta name="description" content="Datenschutzerklärung von UNIverse. Wir gehen verantwortungsvoll mit deinen Daten um.">
+<meta name="theme-color" content="#0073BE">
+<meta name="robots" content="index,follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --b:#0073BE;
+  --b2:#54B1FD;
+  --bl:#EAF5FC;
+  --bm:#A6DDF6;
+  --g1:#F3F6FA;
+  --g2:#E2E8F1;
+  --g4:#94A3B8;
+  --g5:#64748B;
+  --g6:#475569;
+  --g8:#1E293B;
+  --w:#FFFFFF;
+  --s1:0 1px 4px rgba(15,30,60,.06);
+  --s2:0 4px 16px rgba(15,30,60,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
+body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.65;background:var(--w);-webkit-font-smoothing:antialiased;}
+.fn{font-family:'Nunito',sans-serif;}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px;}
+
+/* ========== NAV ========== */
+.nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 16px rgba(15,30,60,.06);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.nav-logo{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;letter-spacing:-1px;color:var(--b);text-decoration:none;}
+.nav-logo .verse{font-weight:700;color:var(--g8);}
+.nav-back{display:inline-flex;align-items:center;gap:6px;color:var(--g6);font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;text-decoration:none;padding:9px 16px;border-radius:50px;border:1.5px solid var(--g2);transition:.18s;}
+.nav-back:hover{color:var(--b);border-color:var(--b);}
+
+/* ========== HERO ========== */
+.page-hero{padding:60px 0 30px;background:linear-gradient(165deg,#EAF5FC 0%,#D3ECF8 100%);}
+.page-hero h1{font-family:'Nunito',sans-serif;font-size:48px;font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--g8);margin-bottom:8px;}
+.page-hero p{color:var(--g6);font-size:16px;}
+
+/* ========== TOC ========== */
+.toc{background:var(--g1);border-radius:14px;padding:20px 24px;margin:30px 0 10px;}
+.toc-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--g5);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.toc ol{margin-left:20px;}
+.toc li{font-size:14px;color:var(--g6);margin-bottom:4px;}
+.toc a{color:var(--b);text-decoration:none;font-weight:600;}
+.toc a:hover{text-decoration:underline;}
+
+/* ========== CONTENT ========== */
+.content{padding:50px 0 80px;}
+.content h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;color:var(--g8);margin:42px 0 14px;letter-spacing:-.3px;scroll-margin-top:90px;}
+.content h2:first-of-type{margin-top:0;}
+.content h2 .num{color:var(--b);margin-right:6px;}
+.content h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:17px;color:var(--g8);margin:22px 0 8px;}
+.content p{font-size:15.5px;color:var(--g6);margin-bottom:14px;line-height:1.7;}
+.content p strong{color:var(--g8);font-family:'Nunito',sans-serif;font-weight:800;}
+.content a{color:var(--b);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,115,190,.3);transition:border-color .18s;}
+.content a:hover{border-bottom-color:var(--b);}
+.content .info-box{background:var(--bl);border-radius:14px;padding:22px 24px;margin:8px 0 20px;border-left:4px solid var(--b);}
+.content .info-box p{margin-bottom:6px;color:var(--g8);}
+.content .info-box p:last-child{margin-bottom:0;}
+.content ul{margin:0 0 16px 22px;}
+.content ul li{font-size:15.5px;color:var(--g6);margin-bottom:8px;line-height:1.6;}
+.content ul li strong{color:var(--g8);}
+
+/* ========== FOOTER ========== */
+.footer{padding:36px 0 28px;background:var(--g8);color:#94A3B8;text-align:center;}
+.footer .logo{font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;}
+.footer .logo .verse{font-weight:700;color:var(--b2);}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-size:13px;margin:14px 0 14px;}
+.footer-links a{color:#94A3B8;text-decoration:none;transition:.15s;}
+.footer-links a:hover{color:#fff;}
+.footer-small{font-size:12px;color:#64748B;}
+
+@media (max-width:600px){
+  .page-hero h1{font-size:34px;}
+  .content h2{font-size:19px;}
+  .nav-back{padding:8px 12px;font-size:13px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="universe-landing.html" class="nav-logo">UNI<span class="verse">verse</span></a>
+    <a href="universe-landing.html" class="nav-back">← Zurück zur Startseite</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Datenschutzerklärung</h1>
+    <p>Wir nehmen den Schutz deiner Daten ernst. Hier erfährst du im Detail, was passiert.</p>
+  </div>
+</section>
+
+<!-- ========== CONTENT ========== -->
+<section class="content">
+  <div class="wrap">
+
+    <div class="toc">
+      <div class="toc-title">Inhaltsverzeichnis</div>
+      <ol>
+        <li><a href="#verantwortlich">Verantwortliche Stelle</a></li>
+        <li><a href="#allgemein">Allgemeines zur Datenverarbeitung</a></li>
+        <li><a href="#hosting">Hosting &amp; Server-Logfiles</a></li>
+        <li><a href="#prelaunch">Pre-Launch-Anmeldung (Newsletter)</a></li>
+        <li><a href="#paypal">Spenden über PayPal</a></li>
+        <li><a href="#kontakt">Kontaktaufnahme per E-Mail</a></li>
+        <li><a href="#fonts">Google Fonts</a></li>
+        <li><a href="#rechte">Deine Rechte als betroffene Person</a></li>
+        <li><a href="#sicherheit">Datensicherheit</a></li>
+        <li><a href="#aenderung">Aktualität &amp; Änderung dieser Erklärung</a></li>
+      </ol>
+    </div>
+
+    <h2 id="verantwortlich"><span class="num">1.</span>Verantwortliche Stelle</h2>
+    <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
+    <div class="info-box">
+      <p><strong>Lena Tschirk</strong></p>
+      <p>Heroldsberger Weg 123</p>
+      <p>90411 Nürnberg</p>
+      <p>E-Mail: <a href="mailto:info.uni-verse@gmx.de">info.uni-verse@gmx.de</a></p>
+    </div>
+
+    <h2 id="allgemein"><span class="num">2.</span>Allgemeines zur Datenverarbeitung</h2>
+    <p>Wir verarbeiten personenbezogene Daten der Nutzer:innen dieser Website grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten unserer Nutzer:innen erfolgt regelmäßig nur nach Einwilligung oder, wenn eine Einwilligung aus tatsächlichen Gründen nicht eingeholt werden kann und die Verarbeitung der Daten durch gesetzliche Vorschriften gestattet ist.</p>
+
+    <h3>Rechtsgrundlagen</h3>
+    <ul>
+      <li><strong>Art. 6 Abs. 1 lit. a DSGVO</strong> dient als Rechtsgrundlage, soweit wir für Verarbeitungsvorgänge eine Einwilligung einholen.</li>
+      <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> dient als Rechtsgrundlage für die Verarbeitung zur Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen.</li>
+      <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> dient als Rechtsgrundlage, soweit die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist und deine Interessen oder Grundrechte und Grundfreiheiten nicht überwiegen.</li>
+    </ul>
+
+    <h3>Datenlöschung &amp; Speicherdauer</h3>
+    <p>Personenbezogene Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch europäische oder nationale Gesetzgeber:innen vorgesehen wurde. Eine Sperrung oder Löschung erfolgt auch dann, wenn eine vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung besteht.</p>
+
+    <h2 id="hosting"><span class="num">3.</span>Hosting &amp; Server-Logfiles</h2>
+    <p>Beim Aufruf unserer Website werden durch unseren Hosting-Anbieter automatisch Informationen erfasst, die dein Browser übermittelt. Dies sind:</p>
+    <ul>
+      <li>IP-Adresse (gekürzt/anonymisiert, soweit technisch möglich)</li>
+      <li>Datum und Uhrzeit des Zugriffs</li>
+      <li>Aufgerufene URL und HTTP-Statuscode</li>
+      <li>Übertragene Datenmenge</li>
+      <li>Browser, Betriebssystem und Sprache</li>
+      <li>Referrer-URL (zuvor besuchte Seite)</li>
+    </ul>
+    <p>Diese Daten werden zur Sicherstellung des fehlerfreien Betriebs der Seite, zur Abwehr von Angriffen sowie zur statistischen Auswertung verarbeitet. Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse). Logfiles werden nach maximal 14 Tagen automatisch gelöscht, sofern sie nicht zur Aufklärung eines konkreten Vorfalls benötigt werden.</p>
+
+    <h2 id="prelaunch"><span class="num">4.</span>Pre-Launch-Anmeldung (Newsletter)</h2>
+    <p>Auf unserer Startseite hast du die Möglichkeit, dich freiwillig in unsere Pre-Launch-Liste einzutragen, um informiert zu werden, sobald UNIverse an deiner Hochschule startet.</p>
+
+    <h3>Erhobene Daten</h3>
+    <ul>
+      <li>E-Mail-Adresse (private Adresse, freiwillige Angabe)</li>
+      <li>Hochschule (freiwillige Angabe aus der vorgegebenen Liste)</li>
+    </ul>
+
+    <h3>Zweck &amp; Rechtsgrundlage</h3>
+    <p>Die Daten werden ausschließlich verwendet, um dich einmalig zu informieren, sobald UNIverse an deiner Hochschule oder in deiner Region startet, sowie um dich gelegentlich über wichtige Meilensteine im Entwicklungsprozess zu informieren. Rechtsgrundlage ist deine ausdrückliche Einwilligung gemäß <strong>Art. 6 Abs. 1 lit. a DSGVO</strong>. Es findet kein Werbe-Profiling statt, deine Daten werden nicht an Dritte weitergegeben.</p>
+
+    <h3>Widerruf &amp; Löschung</h3>
+    <p>Du kannst deine Einwilligung jederzeit widerrufen. Eine kurze E-Mail an <a href="mailto:info.uni-verse@gmx.de">info.uni-verse@gmx.de</a> genügt — wir löschen deine Daten daraufhin unverzüglich. Spätestens mit dem Launch der App und dem damit verbundenen Versand der Start-Information werden die Daten der Pre-Launch-Liste gelöscht, sofern du nicht aktiv in einen späteren Newsletter eingewilligt hast.</p>
+
+    <h2 id="paypal"><span class="num">5.</span>Spenden über PayPal</h2>
+    <p>Auf unserer Startseite hast du die Möglichkeit, das Projekt UNIverse freiwillig finanziell zu unterstützen. Die Zahlung erfolgt extern über den Dienst <strong>PayPal (Europe) S.à r.l. et Cie, S.C.A.</strong>, 22-24 Boulevard Royal, L-2449 Luxembourg.</p>
+    <p>Wenn du auf den PayPal-Button klickst, wirst du zur Website von PayPal weitergeleitet. Die im Rahmen der Zahlung verarbeiteten Daten (z.&nbsp;B. Name, E-Mail-Adresse, Bezahlinformationen) werden ausschließlich von PayPal verarbeitet. Wir erhalten von PayPal lediglich die Bestätigung der Zahlung sowie deinen Namen und ggf. eine Notiz, sofern du diese im Verwendungszweck angibst.</p>
+    <p>Rechtsgrundlage für die Weiterleitung zu PayPal sowie die Verarbeitung im Rahmen der Spende ist <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Durchführung der Spende auf deinen Wunsch) sowie <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse an einer einfachen, sicheren Zahlungsabwicklung).</p>
+    <p>Weitere Informationen zur Datenverarbeitung durch PayPal findest du in der PayPal-Datenschutzerklärung: <a href="https://www.paypal.com/de/legalhub/privacy-full" target="_blank" rel="noopener">https://www.paypal.com/de/legalhub/privacy-full</a></p>
+
+    <h2 id="kontakt"><span class="num">6.</span>Kontaktaufnahme per E-Mail</h2>
+    <p>Wenn du uns eine E-Mail an <a href="mailto:info.uni-verse@gmx.de">info.uni-verse@gmx.de</a> schreibst, werden die mit der E-Mail übermittelten Daten (E-Mail-Adresse, ggf. Name und Inhalt der Nachricht) ausschließlich zur Bearbeitung deines Anliegens gespeichert und verwendet. Diese Daten geben wir nicht an Dritte weiter.</p>
+    <p>Rechtsgrundlage ist dein berechtigtes Interesse an der Beantwortung deiner Anfrage <strong>(Art. 6 Abs. 1 lit. f DSGVO)</strong>. Die Daten werden gelöscht, sobald die Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+
+    <h2 id="fonts"><span class="num">7.</span>Google Fonts</h2>
+    <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten <strong>Google Fonts</strong>, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google"). Die verwendeten Schriftarten werden bei Aufruf der Seite vom Server von Google Fonts geladen. Hierbei wird deine IP-Adresse an Google übertragen.</p>
+    <p>Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse an einer einheitlichen, professionellen Darstellung unserer Inhalte). Eine spätere lokale Einbindung der Schriftarten ist geplant. Weitere Informationen findest du unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>.</p>
+
+    <h2 id="rechte"><span class="num">8.</span>Deine Rechte als betroffene Person</h2>
+    <p>Wenn personenbezogene Daten von dir verarbeitet werden, bist du Betroffene:r im Sinne der DSGVO und es stehen dir folgende Rechte zu:</p>
+    <ul>
+      <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO): Du kannst Auskunft darüber verlangen, welche Daten wir von dir verarbeiten.</li>
+      <li><strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO): Du kannst die Berichtigung unrichtiger Daten verlangen.</li>
+      <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO): Du kannst die Löschung deiner Daten verlangen, soweit keine gesetzliche Aufbewahrungspflicht entgegensteht.</li>
+      <li><strong>Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO).</li>
+      <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO).</li>
+      <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO): Du kannst der Verarbeitung deiner Daten jederzeit widersprechen.</li>
+      <li><strong>Widerrufsrecht</strong> (Art. 7 Abs. 3 DSGVO): Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen.</li>
+      <li><strong>Beschwerderecht</strong> (Art. 77 DSGVO): Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. In Bayern ist das das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), <a href="https://www.lda.bayern.de" target="_blank" rel="noopener">www.lda.bayern.de</a>.</li>
+    </ul>
+    <p>Zur Wahrnehmung deiner Rechte genügt eine formlose E-Mail an <a href="mailto:info.uni-verse@gmx.de">info.uni-verse@gmx.de</a>.</p>
+
+    <h2 id="sicherheit"><span class="num">9.</span>Datensicherheit</h2>
+    <p>Wir setzen technische und organisatorische Sicherheitsmaßnahmen ein, um deine Daten gegen Manipulation, Verlust, Zerstörung oder den Zugriff unberechtigter Personen zu schützen. Insbesondere wird die Verbindung zu unserer Website per <strong>HTTPS-Verschlüsselung</strong> abgesichert. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend angepasst.</p>
+
+    <h2 id="aenderung"><span class="num">10.</span>Aktualität &amp; Änderung dieser Erklärung</h2>
+    <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand <strong>Mai 2026</strong>. Durch die Weiterentwicklung unserer Website und der Angebote darauf oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Version kann jederzeit auf dieser Seite abgerufen werden.</p>
+
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="logo">UNI<span class="verse">verse</span></div>
+    <div class="footer-links">
+      <a href="universe-landing.html">Startseite</a>
+      <a href="mailto:info.uni-verse@gmx.de">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div class="footer-small">© 2026 UNIverse · Made with ❤️ in Ansbach</div>
+  </div>
+</footer>
+
+</body>
+</html>
