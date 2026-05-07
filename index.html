@@ -138,6 +138,8 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
 .signup input[type="email"]:focus{border-color:var(--b);}
 .signup select{padding:16px 20px;border:2px solid var(--w);background:var(--w);border-radius:50px;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:.2s;min-width:180px;}
 .signup select:focus{border-color:var(--b);}
+.signup input[type="text"]{flex:1;min-width:220px;padding:16px 20px;border:2px solid var(--w);background:var(--w);border-radius:50px;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:.2s;}
+.signup input[type="text"]:focus{border-color:var(--b);}
 .trust{margin-top:20px;font-size:13px;color:var(--g6);}
 .trust span{display:inline-block;margin:0 10px;}
 
@@ -654,18 +656,187 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
         <h2 class="section-h" style="font-size:38px">Sei ab Tag 1 dabei.</h2>
         <p class="section-sub" style="font-size:16px">Trag <strong>deine private E-Mail-Adresse</strong> ein (Gmail, GMX, Web.de o.ä. — vorerst keine Uni-Mail). Wir melden uns dort, sobald UNIverse an deiner Hochschule startet. Keine Werbung, kein Spam.</p>
 
-        <form id="signup-form" onsubmit="handleSignup(event)">
+        <form id="signup-form" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSignup(event)">
+          <input type="hidden" name="form-name" value="signup">
+          <p style="display:none"><label>Bitte leer lassen: <input name="bot-field"></label></p>
           <input type="email" name="email" placeholder="z.B. dein.name@gmail.com" required>
-          <select name="uni" required>
-            <option value="">Meine Uni</option>
-            <option value="hs-ansbach">HS Ansbach</option>
-            <option value="fau">FAU Erlangen-Nürnberg</option>
-            <option value="th-nuernberg">TH Nürnberg</option>
-            <option value="uni-wuerzburg">Uni Würzburg</option>
-            <option value="uni-bamberg">Uni Bamberg</option>
-            <option value="uni-regensburg">Uni Regensburg</option>
-            <option value="other">Andere</option>
-          </select>
+          <input type="text" name="uni" list="unis-list" placeholder="Deine Hochschule (tippen für Vorschläge)" required autocomplete="off">
+          <datalist id="unis-list">
+  <!-- Baden-Württemberg -->
+  <option value="DHBW (Duale Hochschule Baden-Württemberg)"></option>
+  <option value="Hochschule Aalen"></option>
+  <option value="Hochschule der Medien Stuttgart (HdM)"></option>
+  <option value="Hochschule Esslingen"></option>
+  <option value="Hochschule Furtwangen"></option>
+  <option value="Hochschule Heilbronn"></option>
+  <option value="Hochschule Karlsruhe"></option>
+  <option value="Hochschule Mannheim"></option>
+  <option value="Hochschule Pforzheim"></option>
+  <option value="Hochschule Reutlingen"></option>
+  <option value="KIT Karlsruher Institut für Technologie"></option>
+  <option value="Universität Freiburg"></option>
+  <option value="Universität Heidelberg"></option>
+  <option value="Universität Hohenheim"></option>
+  <option value="Universität Konstanz"></option>
+  <option value="Universität Mannheim"></option>
+  <option value="Universität Stuttgart"></option>
+  <option value="Universität Tübingen"></option>
+  <option value="Universität Ulm"></option>
+  <!-- Bayern -->
+  <option value="FAU Erlangen-Nürnberg"></option>
+  <option value="HS Ansbach"></option>
+  <option value="HS Aschaffenburg"></option>
+  <option value="HS Augsburg"></option>
+  <option value="HS Coburg"></option>
+  <option value="HS Hof"></option>
+  <option value="HS Ingolstadt (THI)"></option>
+  <option value="HS Kempten"></option>
+  <option value="HS Landshut"></option>
+  <option value="HS München (HM)"></option>
+  <option value="HS Neu-Ulm"></option>
+  <option value="HS Rosenheim"></option>
+  <option value="HS Weihenstephan-Triesdorf"></option>
+  <option value="HS Würzburg-Schweinfurt (FHWS)"></option>
+  <option value="LMU München"></option>
+  <option value="OTH Amberg-Weiden"></option>
+  <option value="OTH Regensburg"></option>
+  <option value="TH Deggendorf (THD)"></option>
+  <option value="TH Nürnberg"></option>
+  <option value="TU München (TUM)"></option>
+  <option value="Universität Augsburg"></option>
+  <option value="Universität Bamberg"></option>
+  <option value="Universität Bayreuth"></option>
+  <option value="Universität Passau"></option>
+  <option value="Universität Regensburg"></option>
+  <option value="Universität Würzburg"></option>
+  <!-- Berlin -->
+  <option value="BHT Berliner Hochschule für Technik"></option>
+  <option value="Charité Berlin"></option>
+  <option value="FU Berlin (Freie Universität)"></option>
+  <option value="HTW Berlin"></option>
+  <option value="Humboldt-Universität (HU Berlin)"></option>
+  <option value="HWR Berlin"></option>
+  <option value="TU Berlin"></option>
+  <!-- Brandenburg -->
+  <option value="BTU Cottbus-Senftenberg"></option>
+  <option value="HNE Eberswalde"></option>
+  <option value="TH Brandenburg"></option>
+  <option value="TH Wildau"></option>
+  <option value="Universität Potsdam"></option>
+  <!-- Bremen -->
+  <option value="Hochschule Bremen"></option>
+  <option value="Hochschule Bremerhaven"></option>
+  <option value="Universität Bremen"></option>
+  <!-- Hamburg -->
+  <option value="HAW Hamburg"></option>
+  <option value="HCU Hamburg"></option>
+  <option value="TU Hamburg (TUHH)"></option>
+  <option value="Universität Hamburg"></option>
+  <!-- Hessen -->
+  <option value="Frankfurt UAS"></option>
+  <option value="Goethe-Universität Frankfurt"></option>
+  <option value="Hochschule Darmstadt (h_da)"></option>
+  <option value="Hochschule Fulda"></option>
+  <option value="Hochschule Geisenheim"></option>
+  <option value="Hochschule RheinMain"></option>
+  <option value="TU Darmstadt"></option>
+  <option value="Universität Gießen (JLU)"></option>
+  <option value="Universität Kassel"></option>
+  <option value="Universität Marburg"></option>
+  <!-- Mecklenburg-Vorpommern -->
+  <option value="Hochschule Neubrandenburg"></option>
+  <option value="Hochschule Stralsund"></option>
+  <option value="Hochschule Wismar"></option>
+  <option value="Universität Greifswald"></option>
+  <option value="Universität Rostock"></option>
+  <!-- Niedersachsen -->
+  <option value="HAWK Hildesheim/Holzminden/Göttingen"></option>
+  <option value="Hochschule Emden/Leer"></option>
+  <option value="Hochschule Hannover"></option>
+  <option value="Hochschule Osnabrück"></option>
+  <option value="Jade Hochschule"></option>
+  <option value="Leibniz Universität Hannover"></option>
+  <option value="Leuphana Universität Lüneburg"></option>
+  <option value="Ostfalia Hochschule"></option>
+  <option value="TU Braunschweig"></option>
+  <option value="TU Clausthal"></option>
+  <option value="Universität Göttingen"></option>
+  <option value="Universität Hildesheim"></option>
+  <option value="Universität Oldenburg"></option>
+  <option value="Universität Osnabrück"></option>
+  <option value="Universität Vechta"></option>
+  <!-- Nordrhein-Westfalen -->
+  <option value="FH Aachen"></option>
+  <option value="FH Bielefeld"></option>
+  <option value="FH Dortmund"></option>
+  <option value="FH Münster"></option>
+  <option value="Hochschule Bochum"></option>
+  <option value="Hochschule Bonn-Rhein-Sieg"></option>
+  <option value="Hochschule Düsseldorf"></option>
+  <option value="Hochschule Hamm-Lippstadt"></option>
+  <option value="Hochschule Niederrhein"></option>
+  <option value="Hochschule Rhein-Waal"></option>
+  <option value="Hochschule Ruhr West"></option>
+  <option value="Ruhr-Universität Bochum"></option>
+  <option value="RWTH Aachen"></option>
+  <option value="TH Köln"></option>
+  <option value="TH Ostwestfalen-Lippe (TH OWL)"></option>
+  <option value="TU Dortmund"></option>
+  <option value="Universität Bielefeld"></option>
+  <option value="Universität Bonn"></option>
+  <option value="Universität Duisburg-Essen"></option>
+  <option value="Universität Düsseldorf (HHU)"></option>
+  <option value="Universität Köln"></option>
+  <option value="Universität Münster"></option>
+  <option value="Universität Paderborn"></option>
+  <option value="Universität Siegen"></option>
+  <option value="Universität Wuppertal"></option>
+  <option value="Westfälische Hochschule"></option>
+  <!-- Rheinland-Pfalz -->
+  <option value="Hochschule Kaiserslautern"></option>
+  <option value="Hochschule Koblenz"></option>
+  <option value="Hochschule Mainz"></option>
+  <option value="Hochschule Trier"></option>
+  <option value="RPTU Kaiserslautern-Landau"></option>
+  <option value="Universität Mainz (JGU)"></option>
+  <option value="Universität Trier"></option>
+  <!-- Saarland -->
+  <option value="HTW Saar"></option>
+  <option value="Universität des Saarlandes"></option>
+  <!-- Sachsen -->
+  <option value="Hochschule Mittweida"></option>
+  <option value="Hochschule Zittau/Görlitz (HSZG)"></option>
+  <option value="HTW Dresden"></option>
+  <option value="HTWK Leipzig"></option>
+  <option value="TU Bergakademie Freiberg"></option>
+  <option value="TU Chemnitz"></option>
+  <option value="TU Dresden"></option>
+  <option value="Universität Leipzig"></option>
+  <option value="WHZ Zwickau"></option>
+  <!-- Sachsen-Anhalt -->
+  <option value="Hochschule Anhalt"></option>
+  <option value="Hochschule Harz"></option>
+  <option value="Hochschule Magdeburg-Stendal"></option>
+  <option value="Hochschule Merseburg"></option>
+  <option value="Universität Halle-Wittenberg (MLU)"></option>
+  <option value="Universität Magdeburg (OvGU)"></option>
+  <!-- Schleswig-Holstein -->
+  <option value="Europa-Universität Flensburg"></option>
+  <option value="Hochschule Flensburg"></option>
+  <option value="Hochschule Kiel"></option>
+  <option value="TH Lübeck"></option>
+  <option value="Universität Kiel (CAU)"></option>
+  <option value="Universität Lübeck"></option>
+  <!-- Thüringen -->
+  <option value="Bauhaus-Universität Weimar"></option>
+  <option value="DHGE Gera/Eisenach"></option>
+  <option value="EAH Jena (Ernst-Abbe-Hochschule)"></option>
+  <option value="Hochschule Nordhausen"></option>
+  <option value="Hochschule Schmalkalden"></option>
+  <option value="TU Ilmenau"></option>
+  <option value="Universität Erfurt"></option>
+  <option value="Universität Jena (FSU)"></option>
+          </datalist>
           <button type="submit" class="btn-cta" style="width:100%;justify-content:center;margin-top:4px">
             Anmelden
           </button>
@@ -798,22 +969,25 @@ function handleSignup(e){
   const email = form.email.value;
   const uni = form.uni.value;
 
-  // TEMP: wir zeigen einfach den Success-State.
-  // PRODUCTION: hier fetch() zu einem Backend oder Formspree/Getform.
-  console.log('Signup:', {email, uni});
+  // Daten an Netlify Forms senden
+  const formData = new FormData(form);
 
-  // Für späteren Echt-Betrieb: siehe Anleitung in der README
-  // Beispiel Formspree:
-  // fetch('https://formspree.io/f/DEIN_FORM_ID', {
-  //   method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-  //   body: JSON.stringify({email, uni})
-  // });
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    document.getElementById('signup-form-wrap').style.display = 'none';
+    document.getElementById('signup-success').style.display = 'block';
 
-  document.getElementById('signup-form-wrap').style.display = 'none';
-  document.getElementById('signup-success').style.display = 'block';
-
-  // Analytics-Event (falls später hinzugefügt)
-  if (window.gtag) gtag('event', 'signup', {uni:uni});
+    // Analytics-Event (falls später hinzugefügt)
+    if (window.gtag) gtag('event', 'signup', {uni: uni});
+  })
+  .catch(error => {
+    console.error('Signup-Fehler:', error);
+    alert('Hmm, da ist was schiefgegangen 😕\n\nBitte probier es nochmal — oder schreib uns direkt an info.uni-verse@gmx.de und wir tragen dich manuell ein.');
+  });
 }
 
 /* =========== SUPPORT-LOGIK =========== */
