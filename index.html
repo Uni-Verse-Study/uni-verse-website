@@ -222,6 +222,26 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
 
 .support-success{display:none;text-align:center;padding:20px;}
 .support-success h4{font-family:'Nunito',sans-serif;font-weight:800;font-size:24px;color:var(--g);margin-bottom:8px;}
+.wa-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;padding:14px 24px;border-radius:50px;text-decoration:none;transition:.2s;box-shadow:0 4px 14px rgba(37,211,102,.3);}
+.wa-btn:hover{background:#1ebe5a;transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,211,102,.4);}
+
+/* Founding-Member-Modal */
+.fm-modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,30,60,.55);backdrop-filter:blur(4px);z-index:9999;align-items:center;justify-content:center;padding:20px;animation:fmFadeIn .2s ease-out;}
+.fm-modal-backdrop.show{display:flex;}
+@keyframes fmFadeIn{from{opacity:0}to{opacity:1}}
+.fm-modal{background:#fff;border-radius:24px;padding:32px 28px;max-width:420px;width:100%;box-shadow:0 30px 80px rgba(15,30,60,.4);position:relative;animation:fmSlideUp .25s ease-out;}
+@keyframes fmSlideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.fm-modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;background:var(--g1);color:var(--g6);border-radius:50%;font-size:22px;line-height:1;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;}
+.fm-modal-close:hover{background:var(--g2);color:var(--g8);}
+.fm-modal-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;text-align:center;color:var(--g8);margin-bottom:8px;line-height:1.2;}
+.fm-modal-sub{text-align:center;color:var(--g6);font-size:14px;line-height:1.5;margin-bottom:20px;}
+.fm-label{display:block;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:var(--g7);margin-bottom:6px;}
+.fm-input{width:100%;padding:13px 16px;border:2px solid var(--g2);border-radius:12px;font-size:15px;font-family:inherit;transition:.15s;background:#fff;}
+.fm-input:focus{outline:none;border-color:var(--b);box-shadow:0 0 0 3px rgba(0,115,190,.12);}
+.fm-submit{width:100%;background:#ffc439;color:#002a7c;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;padding:15px;border:none;border-radius:50px;cursor:pointer;transition:.2s;margin-top:18px;}
+.fm-submit:hover:not(:disabled){background:#ffb800;transform:translateY(-1px);}
+.fm-submit:disabled{opacity:.6;cursor:wait;}
+.fm-disclaimer{font-size:11px;color:var(--g5);text-align:center;margin-top:12px;line-height:1.4;}
 
 /* Lifetime-Counter über der Support-Box */
 .lifetime-banner{background:linear-gradient(135deg,#FFF4D6,#FFE8A3);border:2px solid #F5C842;border-radius:14px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-family:'Nunito',sans-serif;}
@@ -638,9 +658,44 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
         <div class="support-success" id="support-success">
           <div style="font-size:56px;margin-bottom:12px">🚀</div>
           <h4>Du hast uns dem Raketenstart ein Stück näher gebracht!</h4>
-          <p style="color:var(--g6);margin-top:6px" id="success-msg">Wir melden uns per E-Mail sobald UNIverse live geht.</p>
+          <p style="color:var(--g6);margin:6px 0 22px" id="success-msg">Wir melden uns per E-Mail sobald UNIverse live geht.</p>
+          <a href="https://chat.whatsapp.com/G3axm2aC7UH4SEeOUCSEdr?mode=gi_t" target="_blank" rel="noopener" class="wa-btn">
+            <span style="font-size:20px">📲</span>
+            <span>Zur Insider-WhatsApp-Gruppe</span>
+          </a>
+          <p style="font-size:12px;color:var(--g5);margin-top:12px;line-height:1.5">Optional — exklusive Updates, Beta-Tests &amp; Feedback-Runden für Founding Members</p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Founding-Member-Registrierungs-Modal vor PayPal -->
+  <div class="fm-modal-backdrop" id="fm-modal-backdrop" onclick="closeFmModal(event)">
+    <div class="fm-modal" onclick="event.stopPropagation()">
+      <button type="button" class="fm-modal-close" onclick="closeFmModal()" aria-label="Schließen">×</button>
+      <div style="font-size:42px;text-align:center;margin-bottom:8px">🚀</div>
+      <h3 class="fm-modal-title">Du bist gleich Founding Member</h3>
+      <p class="fm-modal-sub">Damit wir dich registrieren und beim Launch erreichen können — kurz Vorname und Email:</p>
+      <form id="fm-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFoundingMember(event)">
+        <input type="hidden" name="access_key" value="0ee10d02-f38b-44bd-86ee-5a5130f3378a">
+        <input type="hidden" name="subject" value="🚀 Neuer UNIverse Founding Member">
+        <input type="hidden" name="from_name" value="UNIverse Pre-Launch">
+        <input type="hidden" name="form_type" value="Founding Member (PayPal)">
+        <input type="hidden" name="betrag" id="fm-betrag" value="">
+        <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+        <label class="fm-label">Vorname</label>
+        <input type="text" name="vorname" id="fm-vorname" class="fm-input" required placeholder="z.B. Anna" autocomplete="given-name">
+
+        <label class="fm-label" style="margin-top:14px">Private Email</label>
+        <input type="email" name="email" id="fm-email" class="fm-input" required placeholder="anna.muster@gmail.com" autocomplete="email">
+        <p style="font-size:11px;color:var(--g5);margin-top:6px">Am besten deine private Adresse, die du auch langfristig nutzt.</p>
+
+        <button type="submit" class="fm-submit" id="fm-submit-btn">
+          <span id="fm-submit-text">Weiter zu PayPal →</span>
+        </button>
+        <p class="fm-disclaimer">Wir nutzen deine Email <strong>nur für UNIverse-Updates</strong>. Keine Werbung, keine Weitergabe.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -1080,34 +1135,69 @@ function handlePaypal(){
     return;
   }
 
-  const paypalMeHandle = 'universesupport';
-  const url = `https://paypal.me/${paypalMeHandle}/${amount}EUR`;
+  // Betrag im versteckten Feld speichern, Modal öffnen
+  document.getElementById('fm-betrag').value = amount + ' €';
+  document.getElementById('fm-submit-text').textContent = `Weiter zu PayPal (${amount} €) →`;
+  document.getElementById('fm-modal-backdrop').classList.add('show');
+  // Auto-Focus auf Vorname
+  setTimeout(() => document.getElementById('fm-vorname').focus(), 100);
+}
 
-  window.open(url, '_blank');
+function closeFmModal(e){
+  if (e && e.target.id !== 'fm-modal-backdrop' && !e.target.classList.contains('fm-modal-close')) return;
+  document.getElementById('fm-modal-backdrop').classList.remove('show');
+}
 
-  setTimeout(() => {
-    if (confirm('Hast du die Zahlung bei PayPal abgeschlossen?')){
-      // Optimistisch: Zähler aktualisieren
-      supportCurrent += amount;
-      supportCount += 1;
+function handleFoundingMember(e){
+  e.preventDefault();
+  const form = e.target;
+  const amount = parseFloat(document.getElementById('support-amount').value);
+  const submitBtn = document.getElementById('fm-submit-btn');
+  const submitText = document.getElementById('fm-submit-text');
 
-      updateProgress();
+  submitBtn.disabled = true;
+  submitText.textContent = 'Sende...';
 
-      // Passende Success-Message
-      let msg;
-      if (amount >= 10){
-        msg = '🚀 Founding-Member-Badge gesichert! Wir laden dich gleich zur Insider-WhatsApp-Gruppe ein und melden uns sobald UNIverse live geht.';
-      } else {
-        msg = '🚀 Founding-Member-Badge gesichert! Wir melden uns per E-Mail sobald UNIverse live geht.';
-      }
-      document.getElementById('success-msg').textContent = msg;
+  // Daten an Web3Forms senden
+  const formData = new FormData(form);
+  const json = JSON.stringify(Object.fromEntries(formData));
 
-      document.getElementById('support-form-wrap').style.display = 'none';
-      document.getElementById('support-success').style.display = 'block';
-
-      if (window.gtag) gtag('event', 'support', {amount: amount});
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: json
+  })
+  .then(async response => {
+    const data = await response.json();
+    if (response.status !== 200 || !data.success){
+      throw new Error(data.message || 'Registrierung fehlgeschlagen');
     }
-  }, 1500);
+
+    // 1. PayPal in neuem Tab öffnen
+    const paypalMeHandle = 'universesupport';
+    const url = `https://paypal.me/${paypalMeHandle}/${amount}EUR`;
+    window.open(url, '_blank');
+
+    // 2. Modal schließen
+    document.getElementById('fm-modal-backdrop').classList.remove('show');
+
+    // 3. Optimistisch: Zähler aktualisieren + Success-State zeigen
+    supportCurrent += amount;
+    supportCount += 1;
+    updateProgress();
+
+    document.getElementById('success-msg').textContent =
+      '🚀 Founding-Member-Badge gesichert! Wir melden uns per E-Mail sobald UNIverse live geht.';
+    document.getElementById('support-form-wrap').style.display = 'none';
+    document.getElementById('support-success').style.display = 'block';
+
+    if (window.gtag) gtag('event', 'support', {amount: amount});
+  })
+  .catch(err => {
+    alert('Da ist was schief gelaufen: ' + err.message + '\n\nBitte versuche es nochmal oder schreib uns direkt an info.uni-verse@gmx.de');
+    submitBtn.disabled = false;
+    submitText.textContent = `Weiter zu PayPal (${amount} €) →`;
+  });
 }
 
 // Beim Laden Progress + Tier-Label aktualisieren
