@@ -1080,13 +1080,7 @@ function handlePaypal(){
     return;
   }
 
-  /*
-    ECHTE PAYPAL-INTEGRATION:
-    Siehe universe-landing-README.md für die vollständige Anleitung.
-    Kurz: Ersetze 'universe-ansbach' unten durch euren echten paypal.me-Namen.
-  */
-
-  const paypalMeHandle = 'universe-ansbach';  // <<< HIER EUREN PAYPAL.ME-NAMEN EINTRAGEN
+  const paypalMeHandle = 'universesupport';
   const url = `https://paypal.me/${paypalMeHandle}/${amount}EUR`;
 
   window.open(url, '_blank');
