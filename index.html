@@ -6,11 +6,20 @@
 <title>UNIverse — Der Raum für echte Studi-Connections</title>
 <meta name="description" content="Die Studi-Matching-Plattform für deutsche Unis und Hochschulen. Finde Lerngruppen, tausche Skills, entdecke Leute mit deinen Hobbys.">
 <meta name="theme-color" content="#0073BE">
+<link rel="canonical" href="https://universe-launch.de/">
 
-<!-- Open Graph für Social Sharing -->
+<!-- Open Graph für Social Sharing (WhatsApp, LinkedIn, Facebook) -->
 <meta property="og:title" content="UNIverse — Der Raum für echte Studi-Connections">
-<meta property="og:description" content="Die Studi-Matching-Plattform für deine Uni.">
+<meta property="og:description" content="Die Studi-Matching-Plattform für deine Uni. Lernbuddies finden, Skills tauschen, Hobbys teilen.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://universe-launch.de/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="UNIverse">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UNIverse — Der Raum für echte Studi-Connections">
+<meta name="twitter:description" content="Die Studi-Matching-Plattform für deine Uni.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,13 +206,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
 
 .support-box{background:var(--w);border-radius:24px;padding:36px 32px;box-shadow:var(--s3);border:2px solid var(--bl);}
 .support-progress{margin-bottom:24px;}
-.support-progress-info{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
-.support-current{font-family:'Nunito',sans-serif;font-weight:900;font-size:28px;color:var(--b);line-height:1;}
-.support-goal{font-size:14px;color:var(--g5);}
-.support-bar-bg{height:12px;background:var(--g1);border-radius:20px;overflow:hidden;margin-bottom:8px;}
-.support-bar-fill{height:100%;background:linear-gradient(90deg,var(--b),var(--b2));border-radius:20px;transition:width .6s ease;}
-.support-bar-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--g5);}
-.support-bar-meta b{color:var(--g8);font-family:'Nunito',sans-serif;font-weight:800;}
 
 .support-amount-lbl{font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:var(--g8);margin-bottom:10px;display:block;}
 .support-quick{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
@@ -620,17 +622,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--g8);line-height:1.6;background
             </div>
           </div>
 
-          <div class="support-progress">
-            <div class="support-progress-info">
-              <span class="support-current" id="support-current">0 €</span>
-              <span class="support-goal">von 200 € Ziel</span>
-            </div>
-            <div class="support-bar-bg"><div class="support-bar-fill" id="support-bar" style="width:0%"></div></div>
-            <div class="support-bar-meta">
-              <span><b id="support-count">0</b> Founding Members</span>
-              <span id="support-percent">0 %</span>
-            </div>
-          </div>
+          <p style="text-align:center;color:var(--g6);font-size:14px;line-height:1.5;margin-bottom:24px">Jeder Beitrag bringt UNIverse näher an den Launch.<br><strong>Schon ab 1 € bist du Founding Member 🚀</strong></p>
 
           <label class="support-amount-lbl">Dein Beitrag (du wählst selbst):</label>
           <div class="support-quick">
@@ -1028,7 +1020,7 @@ function shareUniverse(e){
   const shareData = {
     title: 'UNIverse — Studi-Matching für deine Uni',
     text: 'Schau dir UNIverse an — die neue Plattform für echte Studi-Connections an deiner Uni 🚀',
-    url: 'https://uni-verse-prelaunch.netlify.app/'
+    url: 'https://universe-launch.de/'
   };
 
   if (navigator.share) {
@@ -1083,20 +1075,6 @@ function handleSignup(e){
 }
 
 /* =========== SUPPORT-LOGIK =========== */
-
-// TODO: Diese Zahlen später durch echte Daten aus PayPal / Backend ersetzen.
-const SUPPORT_GOAL = 200;
-
-let supportCurrent = 0;          // aktueller Stand in €
-let supportCount = 0;            // Anzahl Unterstützer gesamt
-
-function updateProgress(){
-  const pct = Math.min(100, Math.round((supportCurrent/SUPPORT_GOAL)*100));
-  document.getElementById('support-current').textContent = supportCurrent + ' €';
-  document.getElementById('support-bar').style.width = pct + '%';
-  document.getElementById('support-count').textContent = supportCount;
-  document.getElementById('support-percent').textContent = pct + ' %';
-}
 
 function setAmount(amt){
   document.getElementById('support-amount').value = amt;
@@ -1181,11 +1159,7 @@ function handleFoundingMember(e){
     // 2. Modal schließen
     document.getElementById('fm-modal-backdrop').classList.remove('show');
 
-    // 3. Optimistisch: Zähler aktualisieren + Success-State zeigen
-    supportCurrent += amount;
-    supportCount += 1;
-    updateProgress();
-
+    // 3. Success-State zeigen
     document.getElementById('success-msg').textContent =
       '🚀 Founding-Member-Badge gesichert! Wir melden uns per E-Mail sobald UNIverse live geht.';
     document.getElementById('support-form-wrap').style.display = 'none';
@@ -1200,8 +1174,7 @@ function handleFoundingMember(e){
   });
 }
 
-// Beim Laden Progress + Tier-Label aktualisieren
-updateProgress();
+// Beim Laden Tier-Label aktualisieren
 updateTierLabel();
 </script>
 
