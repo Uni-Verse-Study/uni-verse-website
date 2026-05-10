@@ -4574,19 +4574,16 @@ if (typeof mountAstroAvatars === 'function') {
    Merkt sich via localStorage, dass der User es schon gesehen hat. */
 let _prelaunchShown = false;
 let _navCount = 0;
-const PRELAUNCH_THRESHOLD = 7;
-const PRELAUNCH_KEY = 'uniVerse_prelaunch_seen_v1';
+const PRELAUNCH_THRESHOLD = 5;
 
 function checkPrelaunchTrigger() {
   if (_prelaunchShown) return;
-  try { if (localStorage.getItem(PRELAUNCH_KEY) === '1') return; } catch(e){}
 
   _navCount++;
   if (_navCount >= PRELAUNCH_THRESHOLD) {
     _prelaunchShown = true;
     setTimeout(() => {
       showModal('m-prelaunch');
-      try { localStorage.setItem(PRELAUNCH_KEY, '1'); } catch(e){}
     }, 800);
   }
 }
